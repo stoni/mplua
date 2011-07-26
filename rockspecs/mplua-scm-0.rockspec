@@ -18,13 +18,28 @@ external_dependencies = {
    }
 }
 build = {
-   type = "builtin",
-   modules = {
-     msgpack = {
-       sources = {"src/lua_objects.cpp", "src/msgpack.cpp", "src/packer.cpp", "src/packer_impl.cpp", "src/unpacker.cpp"},
-       libraries = {"msgpack"},
-	   incdirs = {"$(MSGPACK_INCDIR)"},
-       libdirs = {"$(MSGPACK_LIBDIR)"}
-     }
-   }
+   platforms = {
+     unix = {
+       type = "builtin",
+       modules = {
+         msgpack = {
+           sources = {"src/lua_objects.cpp", "src/msgpack.cpp", "src/packer.cpp", "src/packer_impl.cpp", "src/unpacker.cpp"},
+           libraries = {"msgpack"},
+	       incdirs = {"$(MSGPACK_INCDIR)"},
+           libdirs = {"$(MSGPACK_LIBDIR)"}
+        }
+      }
+	}
+	win32 = {
+	  type = "builtin",
+       modules = {
+         msgpack = {
+           sources = {"src/lua_objects.cpp", "src/msgpack.cpp", "src/packer.cpp", "src/packer_impl.cpp", "src/unpacker.cpp"},
+           libraries = {"msgpack", "Ws2_32"},
+	       incdirs = {"$(MSGPACK_INCDIR)"},
+           libdirs = {"$(MSGPACK_LIBDIR)"}
+        }
+      }
+	}
+  }
 }
