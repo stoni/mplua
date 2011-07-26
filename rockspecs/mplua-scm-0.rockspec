@@ -14,7 +14,7 @@ dependencies = {
 external_dependencies = {
    MSGPACK = {
       header = "include/msgpack.hpp",
-	  library = "lib/msgpack.lib"
+	  library = "lib/msgpack"
    }
 }
 build = {
